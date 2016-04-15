@@ -1,5 +1,5 @@
 class TripsController < ApplicationController
-  before_action :set_trip, only: [:show, :edit, :update, :destroy]
+  before_action :set_trip, only: [:show, :edit, :update, :destroy, :join_trip]
   before_action :authenticate_user!
 
   # GET /trips
@@ -11,6 +11,9 @@ class TripsController < ApplicationController
   # GET /trips/1
   # GET /trips/1.json
   def show
+    respond_to do |format|
+      format.js
+    end
   end
 
   # GET /trips/new
@@ -26,10 +29,10 @@ class TripsController < ApplicationController
   # POST /trips.json
   def create
     @trip = Trip.new(trip_params)
-
+    @trip.user = current_user
     respond_to do |format|
       if @trip.save
-        format.html { redirect_to @trip, notice: 'Trip was successfully created.' }
+        format.html { redirect_to trips_path, notice: 'Trip was successfully created.' }
         format.json { render :show, status: :created, location: @trip }
       else
         format.html { render :new }
@@ -62,6 +65,13 @@ class TripsController < ApplicationController
     end
   end
 
+  def join_trip
+    UsersTrip.create(trip_id: @trip.id, user_id: current_user.id)
+    respond_to do |format|
+      format.html { redirect_to trips_url, notice: 'successfully joined the trip.' }
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_trip
@@ -70,6 +80,6 @@ class TripsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def trip_params
-      params.require(:trip).permit(:time, :source, :destination, :user_id)
+      params.require(:trip).permit(:time, :source, :destination)
     end
 end

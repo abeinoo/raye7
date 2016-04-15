@@ -1,7 +1,7 @@
 class CreateTrips < ActiveRecord::Migration
   def change
     create_table :trips do |t|
-      t.time :time
+      t.datetime :time
       t.string :source
       t.string :destination
       t.integer :user_id

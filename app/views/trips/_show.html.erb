@@ -1,0 +1,23 @@
+<p>
+  <strong>Time:</strong>
+  <%= @trip.time %>
+</p>
+
+<p>
+  <strong>Source:</strong>
+  <%= @trip.source %>
+</p>
+
+<p>
+  <strong>Destination:</strong>
+  <%= @trip.destination %>
+</p>
+
+<p>
+  <strong>passengers:</strong>
+  <%= @trip.users_trips.collect(&:user).collect(&:name).join(',') %>
+</p>
+
+<% unless @trip.users_trips.collect(&:user_id).include? current_user.id %>
+    <%= button_to 'join', join_trip_trips_path(id: @trip.id), class: 'btn btn-primary' %>
+<% end %>

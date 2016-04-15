@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <h1>Listing Trips</h1>
 
 <table>
@@ -8,7 +6,6 @@
       <th>Time</th>
       <th>Source</th>
       <th>Destination</th>
-      <th>User</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -19,8 +16,7 @@
         <td><%= trip.time %></td>
         <td><%= trip.source %></td>
         <td><%= trip.destination %></td>
-        <td><%= trip.user_id %></td>
-        <td><%= link_to 'Show', trip %></td>
+        <td><%= link_to 'show', trip , {id: 'popup_button', class: 'fa fa-plus mr-5', remote: true, 'data-toggle' => "modal", 'data-target' => "#splash"} %></td>
         <td><%= link_to 'Edit', edit_trip_path(trip) %></td>
         <td><%= link_to 'Destroy', trip, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
@@ -31,3 +27,5 @@
 <br>
 
 <%= link_to 'New Trip', new_trip_path %>
+
+<%= render 'popup' %>
