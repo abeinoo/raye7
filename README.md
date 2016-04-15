@@ -34,6 +34,7 @@ Issues
 - The application design needs to be enhanced
 - The participant in the trip needs to be known not only by name but links or phone number to allow the driver to reach them
 - The user must have links to know the which trips he was joined only filter them
+- There must be api to post the trip to use it for mobile application
 
 Credits
 -------
