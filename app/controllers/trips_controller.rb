@@ -1,11 +1,15 @@
 class TripsController < ApplicationController
+  load_and_authorize_resource
   before_action :set_trip, only: [:show, :edit, :update, :destroy, :join_trip]
-  before_action :authenticate_user!
 
   # GET /trips
   # GET /trips.json
   def index
-    @trips = Trip.all
+    if current_user.admin?
+      @trips = Trip.all
+    else
+      @trips = Trip.where("time >= ?", DateTime.now)
+    end
   end
 
   # GET /trips/1

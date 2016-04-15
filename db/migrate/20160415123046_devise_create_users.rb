@@ -32,8 +32,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string :home, default: ''
       t.string :work, default: ''
       t.string :name
-
-
+      t.integer :role, default: 0
 
       t.timestamps
     end

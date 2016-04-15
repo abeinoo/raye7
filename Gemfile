@@ -18,6 +18,7 @@ gem 'bootstrap-sass'
 gem 'high_voltage'
 gem 'simple_form'
 gem 'devise', '3.4.1'
+gem 'cancancan', '~> 1.13', '>= 1.13.1'
 group :development do
   gem 'better_errors'
   gem 'hub', :require=>nil

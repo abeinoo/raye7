@@ -5,6 +5,7 @@ class CreateTrips < ActiveRecord::Migration
       t.string :source
       t.string :destination
       t.integer :user_id
+      t.boolean :active
 
       t.timestamps null: false
     end

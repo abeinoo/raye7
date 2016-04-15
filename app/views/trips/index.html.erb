@@ -17,8 +17,10 @@
         <td><%= trip.source %></td>
         <td><%= trip.destination %></td>
         <td><%= link_to 'show', trip , {id: 'popup_button', class: 'fa fa-plus mr-5', remote: true, 'data-toggle' => "modal", 'data-target' => "#splash"} %></td>
-        <td><%= link_to 'Edit', edit_trip_path(trip) %></td>
-        <td><%= link_to 'Destroy', trip, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if can? :edt, trip %>
+            <td><%= link_to 'Edit', edit_trip_path(trip) %></td>
+            <td><%= link_to 'Destroy', trip, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>

@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 20160415143648) do
     t.string   "source"
     t.string   "destination"
     t.integer  "user_id"
+    t.boolean  "active"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
@@ -36,6 +37,7 @@ ActiveRecord::Schema.define(version: 20160415143648) do
     t.string   "home",                   default: ""
     t.string   "work",                   default: ""
     t.string   "name"
+    t.integer  "role",                   default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end
