@@ -17,6 +17,7 @@ end
 gem 'bootstrap-sass'
 gem 'high_voltage'
 gem 'simple_form'
+gem 'devise', '3.4.1'
 group :development do
   gem 'better_errors'
   gem 'hub', :require=>nil
