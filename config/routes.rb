@@ -6,4 +6,5 @@ Rails.application.routes.draw do
       post 'join_trip', to: 'trips#join_trip'
     end
   end
+  resources :users, only: [:index, :show]
 end
